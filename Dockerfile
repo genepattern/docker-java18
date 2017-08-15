@@ -1,11 +1,5 @@
 FROM ubuntu
 
-COPY runS3OnBatch.sh /usr/local/bin/runS3OnBatch.sh
-
-RUN mkdir /build
-
-COPY Dockerfile /build/Dockerfile
- 
 RUN apt-get update && apt-get upgrade --yes && \
     apt-get install wget --yes && \
     apt-get install build-essential --yes && \
@@ -26,8 +20,13 @@ RUN \
 # Define commonly used JAVA_HOME variable
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
+COPY common/container_scripts/runS3OnBatch.sh /usr/local/bin/runS3OnBatch.sh
+RUN mkdir /build
+COPY Dockerfile /build/Dockerfile
+
 RUN chmod ugo+x /usr/local/bin/runS3OnBatch.sh
-COPY runLocal.sh /usr/local/bin/runLocal.sh
+COPY common/container_scripts/runLocal.sh /usr/local/bin/runLocal.sh
+
  
 CMD ["/usr/local/bin/runS3OnBatch.sh" ]
 
