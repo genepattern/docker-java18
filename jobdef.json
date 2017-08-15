@@ -24,7 +24,7 @@
 
             }
         ],
-        "image": "liefeld/java18_oracle",
+        "image": "genepattern/docker-java18",
         "memory": 2000,
         "mountPoints": [],
         "ulimits": [],
