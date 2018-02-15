@@ -22,7 +22,11 @@ RUN chmod ugo+x /usr/local/bin/*.sh && \
     rm -rf /usr/lib/python3.5 && \
     rm /usr/lib/jvm/java-8-oracle/javafx-src.zip && \
     rm /usr/lib/jvm/java-8-oracle/src.zip && \
-    rm -rf /usr/lib/jvm/java-8-oracle/man
+    rm -rf /usr/lib/jvm/java-8-oracle/man && \
+    rm /get-pip.py && \ 
+    rm -rf /var/cache/* && \
+    apt-get auto-remove perl --yes
+
 
 # Define commonly used JAVA_HOME variable
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
